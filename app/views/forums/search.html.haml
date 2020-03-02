@@ -6,7 +6,7 @@
         - if @search_forums.length == 0
           %p 検索結果はありません！
         - @search_forums.order(id: "DESC").each do |forum|
-          %a.list-group-item.list-group-item-action{:href => "forums/#{forum.id}"}
+          %a.list-group-item.list-group-item-action{:href => "/forums/#{forum.id}"}
             .d-flex.w-100.justify-content-between
               %h5.mb-1
                 = forum.title
@@ -21,7 +21,7 @@
         - if @search_responses.length == 0
           %p 検索結果はありません！
         - @search_responses.order(id: "DESC").each do |res|
-          %a.list-group-item.list-group-item-action{:href => "forums/#{res.forum.id}"}
+          %a.list-group-item.list-group-item-action{:href => "/forums/#{res.forum.id}"}
             .d-flex.w-100.justify-content-between
               %h5.mb-1
                 = res.text
