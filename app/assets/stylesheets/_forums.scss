@@ -7,6 +7,12 @@
 .navbar {
   margin-bottom: 2em;
   background-color: lightskyblue;
+  color: white;
+  &__title,
+  a:hover {
+    text-decoration: none;
+    color: white;
+  }
 }
 
 .w {
@@ -21,6 +27,14 @@
   }
 }
 
+// forum#show画面
+.forum-list {
+  overflow-y: scroll;
+  height: calc(100% - 300px);
+  &__response {
+    margin-bottom: 4em;
+  }
+}
 .forum-form {
   position: absolute;
   bottom: 2em;

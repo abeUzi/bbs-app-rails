@@ -1,0 +1,30 @@
+#exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    
+    - new_forum = Forum.new
+    - new_forum.responses.build
+    = form_with model:new_forum, local: true, class: "modal-content" do |f|
+      .modal-header
+        %h5#exampleModalLabel.modal-title スレッドの作成
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      .modal-body
+        .form-group
+          %label.col-form-label{:for => "recipient-name"} スレッドタイトル:
+          = f.text_field :title, {id: "recipient-name", class: "form-control"}
+        .form-group
+          %label.col-form-label{:for => "recipient-name"} 投稿文:
+          = f.fields_for :responses do |res|
+            = res.text_field :text, {id: "recipient-name", class: "form-control"}
+
+        .form-group
+          %label.col-form-label{:for => "message-text"} カテゴリ:
+          .input-group-prepend
+            - Category.all.each do |category|
+              .custom-control.custom-checkbox.custom-control-inline
+                %input.custom-control-input{:type => "checkbox",:id => category.id,:name => "forum[category_ids][]",:value => category.id }/
+                %label.custom-control-label{:for => category.id} 
+                  = category.category
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+        = f.submit "Create", {class: "btn btn-primary"}

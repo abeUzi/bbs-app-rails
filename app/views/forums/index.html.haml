@@ -2,23 +2,17 @@
   .row
     = render 'category-sidebar'
     .col-lg-8.main-box
+      新着
       .list-group
-        %a.list-group-item.list-group-item-action{:href => "forums/1"}
-          .d-flex.w-100.justify-content-between
-            %h5.mb-1 List group item heading
-            %small 3 days ago
-          %p.mb-1 Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
-          %small Donec id elit non mi porta.
-        %a.list-group-item.list-group-item-action{:href => "#"}
-          .d-flex.w-100.justify-content-between
-            %h5.mb-1 List group item heading
-            %small.text-muted 3 days ago
-          %p.mb-1 Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
-          %small.text-muted Donec id elit non mi porta.
-        %a.list-group-item.list-group-item-action{:href => "#"}
-          .d-flex.w-100.justify-content-between
-            %h5.mb-1 List group item heading
-            %small.text-muted 3 days ago
-          %p.mb-1 Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
-          %small.text-muted Donec id elit non mi porta.
+        - Forum.all.order(id: "DESC").each do|forum|
+          %a.list-group-item.list-group-item-action{:href => "forums/#{forum.id}"}
+            .d-flex.w-100.justify-content-between
+              %h5.mb-1
+                = forum.title
+              %small
+                = forum.created_at
+            %small
+              - forum.categories.each do |c|
+                = "##{c.category}"
+
     = render 'my-forum-sidebar'

@@ -4,22 +4,29 @@
 
     .col-lg-8.main-box
       .forum-title
-        %h1 スレタイ
+        %h1 
+          = @forum.title
       .forum-list
-        .forum-list__response
-          .forum-list__response--nickname
-            １　名前：あべし 2020/01/01(月) 00:00:00
-          .forum-list__response--text
-            テキスト
+        - @forum.responses.each.with_index(1) do |r,i|
+          .forum-list__response
+            .forum-list__response--nickname
+              %p 
+                = i
+                名前：
+                = r.nickname
+                = r.created_at
+                -# 2020/01/01(月) 00:00:00
+            .forum-list__response--text
+              = r.text
 
-      %form.forum-form
+      = form_with model:[@forum,Response.new],local: true,class: "forum-form" do |f|
         .form-group
-          %label{:for => "exampleInputEmail1"} nickname
-          %input#exampleInputEmail1.form-control{"aria-describedby" => "emailHelp", :type => "email"}/
+          %label{:for => "nickname"} nickname
+          = f.text_field :nickname, {class:"form-control", id:"nickname"}
         .form-group
-          %label{:for => "exampleInputPassword1"} text
-          %input#exampleInputPassword1.form-control{:type => "password"}/
-        %button.btn.btn-primary{:type => "submit"} Submit
+          %label{:for => "responseText"} text
+          = f.text_field :text, {class:"form-control", id:"responseText"}
+        = f.submit "Submit", {class: "btn btn-primary"}
 
 
     = render 'my-forum-sidebar'

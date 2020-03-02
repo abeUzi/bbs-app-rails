@@ -2,8 +2,6 @@
   .col-lg-2.my-forums
     マイスレッド
     .list-group
-      %button.list-group-item.list-group-item-action{:type => "button"}
-        Cras justo odio
-      %button.list-group-item.list-group-item-action{:type => "button"} Dapibus ac facilisis in
-      %button.list-group-item.list-group-item-action{:type => "button"} Morbi leo risus
-      %button.list-group-item.list-group-item-action{:type => "button"} Porta ac consectetur ac
+      - current_user.forums.order(id: "DESC").each do |f|
+        = link_to f.title,forum_path(f),{class: "list-group-item list-group-item-action",type: "button"}
+
