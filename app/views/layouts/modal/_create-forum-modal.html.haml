@@ -3,7 +3,7 @@
     
     - new_forum = Forum.new
     - new_forum.responses.build
-    = form_with model:new_forum,class: "modal-content" do |f|
+    = form_with model:new_forum, local: true, class: "modal-content" do |f|
       .modal-header
         %h5#exampleModalLabel.modal-title スレッドの作成
         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
