@@ -1,0 +1,25 @@
+.container-fluid.w
+  .row
+    = render 'category-sidebar'
+
+    .col-lg-8.main-box
+      .forum-title
+        %h1 スレタイ
+      .forum-list
+        .forum-list__response
+          .forum-list__response--nickname
+            １　名前：あべし 2020/01/01(月) 00:00:00
+          .forum-list__response--text
+            テキスト
+
+      %form.forum-form
+        .form-group
+          %label{:for => "exampleInputEmail1"} nickname
+          %input#exampleInputEmail1.form-control{"aria-describedby" => "emailHelp", :type => "email"}/
+        .form-group
+          %label{:for => "exampleInputPassword1"} text
+          %input#exampleInputPassword1.form-control{:type => "password"}/
+        %button.btn.btn-primary{:type => "submit"} Submit
+
+
+    = render 'my-forum-sidebar'
