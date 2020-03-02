@@ -1,0 +1,16 @@
+%nav.navbar
+  = link_to root_path,{class:"navbar__title"} do
+    %h1 4BEchan
+  %form.form-inline
+    %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
+    %button.btn.btn-outline-success.my-2.my-sm-0.btn-outline-light{:type => "submit"} Search
+  - if user_signed_in?
+    .btn-group
+      %button.btn.btn-outline-light{"data-target" => "#exampleModal", "data-toggle" => "modal", "data-whatever" => "@mdo",:type => "button"} スレッド作成
+      %button.btn.btn-outline-light.dropdown-toggle.dropdown-toggle-split{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+        %span.sr-only Toggle Dropdown
+      .dropdown-menu
+        = link_to "Logout",destroy_user_session_path,{class: "dropdown-item",method: :delete}
+  - else
+    = link_to "Login",new_user_session_path,{class: "btn btn-outline-light",role: "button"}
+
