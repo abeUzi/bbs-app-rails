@@ -2,7 +2,7 @@
   .row
     = render 'category-sidebar'
     .col-lg-8.main-box
-      新着
+      新着スレッド
       .list-group
         - Forum.all.order(id: "DESC").each do|forum|
           %a.list-group-item.list-group-item-action{:href => "forums/#{forum.id}"}

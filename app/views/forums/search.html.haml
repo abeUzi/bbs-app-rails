@@ -1,0 +1,32 @@
+.container-fluid.w
+  .row
+    .col-lg-6.main-box
+      スレタイの検索結果
+      .list-group 
+        - if @search_forums.length == 0
+          %p 検索結果はありません！
+        - @search_forums.order(id: "DESC").each do |forum|
+          %a.list-group-item.list-group-item-action{:href => "forums/#{forum.id}"}
+            .d-flex.w-100.justify-content-between
+              %h5.mb-1
+                = forum.title
+              %small
+                = forum.created_at
+            %small
+              - forum.categories.each do |c|
+                = "##{c.category}"
+    .col-lg-6.main-box
+      レスの検索結果
+      .list-group
+        - if @search_responses.length == 0
+          %p 検索結果はありません！
+        - @search_responses.order(id: "DESC").each do |res|
+          %a.list-group-item.list-group-item-action{:href => "forums/#{res.forum.id}"}
+            .d-flex.w-100.justify-content-between
+              %h5.mb-1
+                = res.text
+              %small
+                = res.created_at
+            %small
+              - res.forum.categories.each do |c|
+                = "##{c.category}"
