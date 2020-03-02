@@ -1,3 +1,21 @@
 // Place all the styles related to the forums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//
+
+.navbar {
+  margin-bottom: 2em;
+}
+
+.top-page {
+  .categories {
+    height: calc(100vh - 72px);
+  }
+  .main-box {
+    height: calc(100vh - 72px);
+  }
+  .my-forums {
+    height: calc(100vh - 72px);
+  }
+}
