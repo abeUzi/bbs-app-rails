@@ -1,7 +1,8 @@
 lock '3.12.0'
 
 set :application, 'bbs-app-rails'
-set :repo_url,  'git@github.com:abeUzi/bbs-app-railsrub.git'
+set :repo_url,  'git@github.com:abeUzi/bbs-app-rails.git'
+set :linked_files, fetch(:linked_files, []).push("config/master.key")
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 set :rbenv_type, :user
 set :rbenv_ruby, '2.5.1'
