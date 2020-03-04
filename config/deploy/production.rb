@@ -1,1 +1,1 @@
-server '18.180.33.43', user: 'ec2-user', roles: %w{app db web}
+server Rails.application.credentials.aws[:repository_ip_adress], user: 'ec2-user', roles: %w{app db web}
