@@ -1,0 +1,18 @@
+.container-fluid.w
+  .row
+    = render 'forums/category-sidebar'
+    .col-lg-8.main-box
+      カテゴリ「#{@category.category}」の検索結果
+      .list-group 
+        - if @forums.length == 0
+          %p 検索結果はありません！
+        - @forums.order(id: "DESC").each do |forum|
+          %a.list-group-item.list-group-item-action{:href => "forums/#{forum.id}"}
+            .d-flex.w-100.justify-content-between
+              %h5.mb-1
+                = forum.title
+              %small
+                = forum.created_at
+            %small
+              - forum.categories.each do |c|
+                = "##{c.category}"
