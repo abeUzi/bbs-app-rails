@@ -40,3 +40,13 @@
   bottom: 2em;
   width: 90%;
 }
+
+.validate-message {
+  color: red;
+  font-weight: 700;
+  display: none;
+}
+
+.create-forum-form__input-category--box {
+  margin-right: 1em;
+}

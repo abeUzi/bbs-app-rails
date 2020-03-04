@@ -20,8 +20,10 @@
         .form-group
           %label.col-form-label{:for => "message-text"} カテゴリ:
           .input-group-prepend
+          %span.validate-message#create-forum-form--category １つ以上選択してください
+          .input-group-prepend.create-forum-form__input-category.flex-wrap
             - Category.all.each do |category|
-              .custom-control.custom-checkbox.custom-control-inline
+              .custom-control.custom-checkbox.create-forum-form__input-category--box
                 %input.custom-control-input{:type => "checkbox",:id => category.id,:name => "forum[category_ids][]",:value => category.id }/
                 %label.custom-control-label{:for => category.id} 
                   = category.category
