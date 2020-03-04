@@ -19,14 +19,15 @@
             .forum-list__response--text
               = r.text
       - if user_signed_in?
-        = form_with model:[@forum,Response.new],local: true,class: "forum-form" do |f|
+        = form_with model:[@forum,Response.new],local: true,class: "forum-form",id: "create-response-form" do |f|
           .form-group
             %label{:for => "nickname"} nickname
             = f.text_field :nickname, {class:"form-control", id:"nickname"}
           .form-group
             %label{:for => "responseText"} text
-            = f.text_field :text, {class:"form-control", id:"responseText"}
-          = f.submit "Submit", {class: "btn btn-primary"}
+            %span.validate-message#create-response-form__valid--text 入力してください
+            = f.text_field :text, {class:"form-control create-response-form__input--text", id:"responseText"}
+          = f.button "Submit", {type: "button", class: "btn btn-primary",onclick:"checkValidateCreateResponse()"}
 
 
     = render 'my-forum-sidebar'
