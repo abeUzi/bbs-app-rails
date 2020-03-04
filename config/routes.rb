@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :forums, only: [:show,:create] do
     resources :responses, only: [:create]
   end
+  resources :categories, only: [:show]
   post '/forums/search', to: 'forums#search'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
