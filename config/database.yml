@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: bbs-app-rails_production
-  username: bbs-app-rails
+  username: root
   password: <%= ENV['BBS-APP-RAILS_DATABASE_PASSWORD'] %>
