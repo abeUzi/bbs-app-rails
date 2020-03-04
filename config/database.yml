@@ -52,3 +52,4 @@ production:
   database: bbs-app-rails_production
   username: root
   password: <%= ENV['BBS-APP-RAILS_DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
