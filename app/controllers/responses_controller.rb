@@ -1,4 +1,5 @@
 class ResponsesController < ApplicationController
+  before_action :authenticate_user!,only:[:create]
 
   def create
     forum = Forum.find(params[:forum_id])
