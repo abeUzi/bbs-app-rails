@@ -1,4 +1,5 @@
 class ForumsController < ApplicationController
+  before_action :authenticate_user!,only:[:create]
   def create
     @forum = Forum.new(create_forum_params)
     @forum.responses.first.user_id = current_user.id

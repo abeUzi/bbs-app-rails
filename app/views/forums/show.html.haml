@@ -18,15 +18,15 @@
                 -# 2020/01/01(月) 00:00:00
             .forum-list__response--text
               = r.text
-
-      = form_with model:[@forum,Response.new],local: true,class: "forum-form" do |f|
-        .form-group
-          %label{:for => "nickname"} nickname
-          = f.text_field :nickname, {class:"form-control", id:"nickname"}
-        .form-group
-          %label{:for => "responseText"} text
-          = f.text_field :text, {class:"form-control", id:"responseText"}
-        = f.submit "Submit", {class: "btn btn-primary"}
+      - if user_signed_in?
+        = form_with model:[@forum,Response.new],local: true,class: "forum-form" do |f|
+          .form-group
+            %label{:for => "nickname"} nickname
+            = f.text_field :nickname, {class:"form-control", id:"nickname"}
+          .form-group
+            %label{:for => "responseText"} text
+            = f.text_field :text, {class:"form-control", id:"responseText"}
+          = f.submit "Submit", {class: "btn btn-primary"}
 
 
     = render 'my-forum-sidebar'
