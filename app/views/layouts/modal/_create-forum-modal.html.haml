@@ -3,7 +3,7 @@
     
     - new_forum = Forum.new
     - new_forum.responses.build
-    = form_with model:new_forum, local: true, class: "modal-content" do |f|
+    = form_with model:new_forum, local: true, class: "modal-content", id: "create-forum-form" do |f|
       .modal-header
         %h5#exampleModalLabel.modal-title スレッドの作成
         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
@@ -11,11 +11,13 @@
       .modal-body
         .form-group
           %label.col-form-label{:for => "recipient-name"} スレッドタイトル:
-          = f.text_field :title, {id: "recipient-name", class: "form-control"}
+          %span.validate-message#create-forum-form--title 入力してください
+          = f.text_field :title, {class: "form-control create-forum-form__input-title"}
         .form-group
           %label.col-form-label{:for => "recipient-name"} 投稿文:
+          %span.validate-message#create-forum-form--response 入力してください
           = f.fields_for :responses do |res|
-            = res.text_field :text, {id: "recipient-name", class: "form-control"}
+            = res.text_field :text, {class: "form-control create-forum-form__input-first-response"}
 
         .form-group
           %label.col-form-label{:for => "message-text"} カテゴリ:
@@ -29,4 +31,4 @@
                   = category.category
       .modal-footer
         %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
-        = f.submit "Create", {class: "btn btn-primary"}
+        = f.button "Create", {type: "button", class: "btn btn-primary",onclick:"checkValidateCreateForum()"}
