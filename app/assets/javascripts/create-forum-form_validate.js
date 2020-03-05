@@ -24,7 +24,6 @@ $(function() {
 
     if (err === false) {
       $('#create-forum-form').submit();
-      console.log('ok');
     }
   };
 });
